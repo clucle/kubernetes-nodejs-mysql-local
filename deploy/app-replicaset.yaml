@@ -1,0 +1,20 @@
+apiVersion: apps/v1      
+kind: ReplicaSet    
+metadata:     
+  name: myweb-nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myweb
+  template:
+    metadata:
+      labels:
+        app: myweb
+    spec:
+      containers:
+      - image: clucle/node-app
+        imagePullPolicy: Never # local
+        name: myweb
+        ports:
+        - containerPort: 8080
